@@ -8,14 +8,14 @@
 
 #### 测试数据表
 
-+-------+----------+------+-----+---------+----------------+
-| Field | Type     | Null | Key | Default | Extra          |
-+-------+----------+------+-----+---------+----------------+
-| id    | int(11)  | NO   | PRI | NULL    | auto_increment |
-| time  | datetime | NO   |     | NULL    |                |
-| data1 | int(11)  | YES  |     | 0       |                |
-| date2 | double   | YES  |     | 0       |                |
-+-------+----------+------+-----+---------+----------------+
+ Field | Type     | Null | Key | Default | Extra
+------ | -------- | ---- | ----| ------- | ---------------
+ id    | int(11)  | NO   | PRI | NULL    | auto_increment
+ time  | datetime | NO   |     | NULL    |
+ data1 | int(11)  | YES  |     | 0       |
+ date2 | double   | YES  |     | 0       |
+
+
 
 ```
 CREATE DATABSE IF NOT EXISTS highcharts DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
@@ -41,3 +41,12 @@ CREATE TABLE `data` (
 * php
 
 * java （包括 jsp+servlet 及 MVC 框架（struts2 或 springMVC））
+
+
+## 2、文件说明
+
+* highcharts.sql  sql文件
+* php php程序目录
+* java-servlet
+* java-struts2
+* java-springMVC
