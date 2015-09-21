@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <dvi id="container"></dvi>
+    <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script type="text/javascript">
+    // 初始化配置
+    var options = {
+        chart: {
+            renderTo: 'container'
+        },
+        xAxis: {
+            categories: []
+        },
+        series: []
+    };
+
+
+    $.get('data.csv', function(data) {
+
+        // 读取每行
+        var lines = data.split('\n');
+
+        $.each(lines, function(lineNo, line) {
+            var items = line.split(',');
+
+            if (lineNo == 0) {
+                // 第一行，Categories,Tokyo,New York,Berlin,London
+                $.each(items, function(itemNo, item) {
+                    if (itemNo > 0) {
+                        var serie = {};
+                        serie.name = item;
+                        serie.selected = true;
+                        serie.data = [];
+                        options.series.push(serie);
+                    }
+                });
+            } else {
+                // 其他行 Jan,7.0,-0.2,-0.9,3.9
+                $.each(items, function(itemNo, item) {
+                    if (itemNo == 0) {
+                        options.xAxis.categories.push(item);
+                    } else {
+                        options.series[itemNo - 1].data.push(parseFloat(item));
+                    }
+                });
+            }
+
+        });
+        var chart = new Highcharts.Chart(options);
+    });
+    </script>
+</body>
+
+</html>
